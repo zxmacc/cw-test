@@ -4,31 +4,21 @@ catch_rules: #转换规则
       transform_rules: #转换规则，最上面的优先最高
         - search: \#.* #在发送请求时匹配#后内容并移除
           replace: ''
-
+        - search: \?.* #在发送请求时匹配?后内容并移除，仅限静态请求
+          replace: '' 
         - search: _ 
           replace: 
-            - _ #保留原始请求
-            - 1.117.73.17 #ip镜像，需要ip HTTPS
+          - _ #保留原始请求
+          - 1.117.73.17 #GithubPage托管
 
-        - search: \.(js|css)
-          action: fetch
-          fetch:
-            status: 200
-            engine: classic
-            preflight: false
-            timeout: 5000
-            mode: cors
-            redirect: follow
-            credentials: include
-            timeout: 5000
+        - search: \.html$
+          header:
+            Content-Type: text/html;charset=UTF-8 #修复标头
 
         - search: _
           action: fetch
           fetch:
             status: 200
-            engine: parallel
-            preflight: true
-            mode: cors
-            redirect: follow
-            credentials: include
+            engine: classic
+            preflight: false
             timeout: 5000
