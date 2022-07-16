@@ -9,7 +9,7 @@ catch_rules: #转换规则
         - search: _ 
           replace: 
           - _ #保留原始请求
-          - zxmacc.gitee.io #GiteePage托管
+          - zxmacc.github.io #GiteePage托管
 
         - search: \.html$
           header:
