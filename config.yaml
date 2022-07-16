@@ -8,10 +8,7 @@ catch_rules: #转换规则
         - search: _ 
           replace: 
             - _ #保留原始请求
-            - 123.45.67.89 #ip镜像，需要ip HTTPS
-            - 123.45.67.90:12345 #任意端口
-            - [2606::1234]:34567 #ipv6
-            - 1.2.3.4.nip.io:65121
+            - 1.117.73.17 #ip镜像，需要ip HTTPS
 
         - search: \.(js|css)
           action: fetch
