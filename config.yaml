@@ -8,7 +8,7 @@ catch_rules: #转换规则
         - search: _ 
           replace: 
             - _ #保留原始请求
-            - 1.117.73.17:8222 #任意端口
+            - zxmacc.gitee.io #任意端口
 
         - search: \.(js|css)
           action: fetch
