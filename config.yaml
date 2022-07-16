@@ -1,36 +1,29 @@
-name: ClientWorker #自定义名称
 catch_rules: #转换规则
     - rule: _ #ClientWorker语法糖，匹配当前域，返回一个域名带端口
       transform_rules: #转换规则，最上面的优先最高
         - search: \#.* #在发送请求时匹配#后内容并移除
           replace: ''
-
+        - search: \?.* #在发送请求时匹配?后内容并移除，仅限静态请求
+          replace: '' 
         - search: _ 
           replace: 
-            - _ #保留原始请求
-            - 1.117.73.17 #任意端口
+          - _ #保留原始请求
+          - xxx.github.io #GithubPage托管
+          - xxx.gitee.io #GiteePage托管
+          - unpkg.com/xxx-html@xxx.xxx/dist #NPM托管
+          - cdnjs.cloudflare.com/ajax/libs/xxx/xxx.xxx/dist #CDNJS托管（大雾
+          - examplebucket.oss-xx-xx.aliyuncs.com #阿里云对象存储托管
+          - xxx.tencentcs.com #腾讯对象存储托管
+          - xxx.qbox.me
 
-        - search: \.(js|css)
+        - search: \.html$
+          header:
+            Content-Type: text/html;charset=UTF-8 #修复标头
+
+        - search: _
           action: fetch
           fetch:
             status: 200
             engine: classic
             preflight: false
             timeout: 5000
-            mode: cors
-            redirect: follow
-            credentials: include
-            timeout: 5000
-
-        - search: _
-          action: fetch
-          fetch:
-            status: 200
-            engine: parallel
-            preflight: true
-            mode: cors
-            redirect: follow
-            credentials: include
-            timeout: 5000
-
-
