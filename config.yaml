@@ -10,6 +10,9 @@ catch_rules: #转换规则
             - _ #保留原始请求
             - 1.117.73.17 #ip镜像，需要ip HTTPS
 
+        - search: \.php$
+          header:
+            Content-Type: text/html;charset=UTF-8 #修复标头
 
         - search: \.(js|css)
           action: fetch
