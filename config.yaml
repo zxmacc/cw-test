@@ -1,3 +1,4 @@
+name: ClientWorker
 catch_rules: #转换规则
     - rule: _ #ClientWorker语法糖，匹配当前域，返回一个域名带端口
       transform_rules: #转换规则，最上面的优先最高
