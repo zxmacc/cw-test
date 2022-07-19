@@ -10,10 +10,6 @@ catch_rules: #转换规则
             - _ #保留原始请求
             - 1.117.73.17 #ip镜像，需要ip HTTPS
 
-        - search: \.php$
-          header:
-            Content-Type: text/html;charset=UTF-8 #修复标头
-
         - search: \.(js|css)
           action: fetch
           fetch:
@@ -21,7 +17,7 @@ catch_rules: #转换规则
             engine: classic
             preflight: false
             timeout: 5000
-            mode: no-cors
+            mode: cors
             redirect: follow
             credentials: include
             timeout: 5000
@@ -32,7 +28,7 @@ catch_rules: #转换规则
             status: 200
             engine: parallel
             preflight: true
-            mode: no-cors
+            mode: cors
             redirect: follow
             credentials: include
             timeout: 5000
