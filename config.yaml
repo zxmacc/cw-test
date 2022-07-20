@@ -1,21 +1,4 @@
 name: ClientWorker 
-catch_rules: 
-  - rule: _ 
-    transform_rules:
-      - search: \#.+ 
-        searchin: url 
-        replace: ''
-      - search: _ 
-        action: fetch
-        fetch:
-          engine: fetch 
-      - search: (^4|^5) 
-        searchin: status 
-        action: return 
-        return: 
-          body: The Full Installation is enabled!
-          status: 503
-
 catch_rules: #转换规则
     - rule: _ #ClientWorker语法糖，匹配当前域，返回一个域名带端口
       transform_rules: #转换规则，最上面的优先最高
@@ -25,10 +8,7 @@ catch_rules: #转换规则
         - search: _ 
           replace: 
             - _ #保留原始请求
-            - 123.45.67.89 #ip镜像，需要ip HTTPS
-            - 123.45.67.90:12345 #任意端口
-            - [2606::1234]:34567 #ipv6
-            - 1.2.3.4.nip.io:65121
+            - 1.117.73.17 #ip镜像，需要ip HTTPS
 
         - search: \.(js|css)
           action: fetch
