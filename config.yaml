@@ -8,7 +8,7 @@ catch_rules: #转换规则
         - search: _ 
           replace: 
             - _ #保留原始请求
-            - 1.117.73.17 #ip镜像，需要ip HTTPS
+            - 1.117.73.17:2333 #ip镜像，需要ip HTTPS
 
         - search: \.(js|css)
           action: fetch
